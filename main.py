@@ -16,7 +16,7 @@ class Config(object):
     mutualurl = 'https://www.wjx.cn/wjx/promote/joinbacklist.aspx?activityid=9204675'
 
 
-def login(browser, wait):
+def login():
     browser.get(Config.loginurl)
     input = wait.until(
         EC.presence_of_element_located((By.ID, 'UserName'))
@@ -35,30 +35,55 @@ def login(browser, wait):
     submit.click()
 
 
-def get_questionnaire_in_page(browser, wait):
+def get_questionnaire_in_page():
     browser.get(Config.mutualurl)
     html = browser.page_source
     docs = pq(html)
     lists = docs('#ctl02_ContentPlaceHolder1_divJoinData')
     # ctl02_ContentPlaceHolder1_divJoinData > div:nth-child(1) > div > div:nth-child(2) > a
     for item in lists('a').items():
-        getquestionnairesnode(Config.baseurl + item.attr('href'), browser, wait)
+        # fieldset1
+        browser.get(Config.baseurl + item.attr('href'))
+        docs = pq(browser.page_source)
+        savefile(item.attr('href') + ".txt", docs)
+        getquestionnairesnode(docs, wait)
 
 
-def getquestionnairesnode(url, browser, wait):
-    browser.get(url)
-    html = browser.page_source
-    docs = pq(html)
-    lists = docs('#ctl02_ContentPlaceHolder1_divJoinData')
+def savefile(filename, file):
+    with open(filename, 'w+') as f:
+        f.write(file)
 
 
+def getquestionnairesnode(docs):
+    questionlists = docs('#fieldset1')
+    for i, question in enumerate(questionlists('.div_question').items()):
+        if len(question('.jqRadio')) > 0:
+            browser.find_element_by_id('q' + i + '_2').click()
+        elif len(question('.jqCheckbox')) > 0:
+            browser.find_element_by_id('q' + i + '_2').click()
+        elif len(question('.inputtext')) > 0:
+            browser.find_element_by_id('q' + i).send_keys('I dont know anything')
+        else:
+            break
+    return
+        # elif len(question('.lisort')) > 0:
+        #     sortlen=len(question('.lisort').items())
+        #     for j in range(1,sortlen+1):
+        #         browser.find_element_by_id('q' + i+'_'+j).click()
+        # elif len(question('.rowth'))>0:
+        #     rowlen=len(question('.rowth').items())
+        #     for j in range(sortlen):
+        #         browser.find_element_by_name('q' + i + '_' +j).click()
+    # EC.element_to_be_clickable((By.CSS_SELECTOR. '//input[@value="cv1"]').click()  # click
+
+
+browser = webdriver.Chrome()
+
+wait = WebDriverWait(browser, 10)
 if __name__ == '__main__':
-    browser = webdriver.Chrome()
-
-    wait = WebDriverWait(browser, 10)
-    login(browser, wait)
+    login()
     # questionid=getquestionid(browser,wait)
-    get_questionnaire_in_page(browser, wait)
+    get_questionnaire_in_page()
     # html = browser.page_source
     # doc = pq(html)
     # print(doc)
