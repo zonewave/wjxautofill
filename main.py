@@ -41,40 +41,63 @@ def get_questionnaire_in_page():
     docs = pq(html)
     lists = docs('#ctl02_ContentPlaceHolder1_divJoinData')
     # ctl02_ContentPlaceHolder1_divJoinData > div:nth-child(1) > div > div:nth-child(2) > a
+    flag=0
     for item in lists('a').items():
         # fieldset1
+        if flag==0:
+            flag=1
+            continue
         browser.get(Config.baseurl + item.attr('href'))
         docs = pq(browser.page_source)
-        savefile(item.attr('href') + ".txt", docs)
-        getquestionnairesnode(docs, wait)
+        savefile(item.attr('href'), browser.page_source)
+        getquestionnairesnode(docs)
 
 
 def savefile(filename, file):
-    with open(filename, 'w+') as f:
+    filename = removechar(filename, '/')
+    filename = removechar(filename, '?')
+    filename = removechar(filename, '.')
+    filename = removechar(filename, '%')
+
+    with open(filename + '.txt', 'w+', encoding='utf-8') as f:
         f.write(file)
+
+
+def removechar(str, flag):
+    strarr = str.split(flag)
+    str = ''.join(strarr)
+    return str
 
 
 def getquestionnairesnode(docs):
     questionlists = docs('#fieldset1')
     for i, question in enumerate(questionlists('.div_question').items()):
+
         if len(question('.jqRadio')) > 0:
-            browser.find_element_by_id('q' + i + '_2').click()
+            ids='q' + str(i+1) + '_1'
+            inputs=browser.find_element_by_id(ids)
+           # // *[ @ id = "q1_2"]//*[@id="q1_2"]
+            browser.find_element_by_xpath('''//*[@id="q1_2"]/../div[1]''')
+            inputs.click()#divquestion1 > ul:nth-child(2) > li:nth-child(1) > a
         elif len(question('.jqCheckbox')) > 0:
-            browser.find_element_by_id('q' + i + '_2').click()
+            browser.find_element_by_id('q' + str(i+1)+ '_2').click()
         elif len(question('.inputtext')) > 0:
-            browser.find_element_by_id('q' + i).send_keys('I dont know anything')
+            browser.find_element_by_id('q' + str(i+1)).send_keys('I dont know anything')
         else:
             break
     return
-        # elif len(question('.lisort')) > 0:
-        #     sortlen=len(question('.lisort').items())
-        #     for j in range(1,sortlen+1):
-        #         browser.find_element_by_id('q' + i+'_'+j).click()
-        # elif len(question('.rowth'))>0:
-        #     rowlen=len(question('.rowth').items())
-        #     for j in range(sortlen):
-        #         browser.find_element_by_name('q' + i + '_' +j).click()
+    # elif len(question('.lisort')) > 0:
+    #     sortlen=len(question('.lisort').items())
+    #     for j in range(1,sortlen+1):
+    #         browser.find_element_by_id('q' + i+'_'+j).click()
+    # elif len(question('.rowth'))>0:
+    #     rowlen=len(question('.rowth').items())
+    #     for j in range(sortlen):
+    #         browser.find_element_by_name('q' + i + '_' +j).click()
     # EC.element_to_be_clickable((By.CSS_SELECTOR. '//input[@value="cv1"]').click()  # click
+
+
+# def isradio(docs):
 
 
 browser = webdriver.Chrome()
