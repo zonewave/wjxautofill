@@ -1,18 +1,16 @@
 from configparser import ConfigParser
 
+class Config(object):
+    def __init__(self,confilename):
+        cfg = ConfigParser()
+        cfg.read(confilename, encoding='utf-8')
+        self.baseurl = cfg.get('url', 'base')
+        self.loginurl = cfg.get('url', 'login')
+        self.mutualurl = cfg.get('url', 'mutualpref') + cfg.get('url', 'mutualid')  # 互填问卷的 自身问卷的ID号
 
-def initconfig(confilename):
-    cfg = ConfigParser()
-    cfg.read(confilename)
-    configs = {
-        'url': {
-            'base': cfg.get('url', 'base'),
-            'login': cfg.get('url', 'login'),
-            'mutualurl': cfg.get('url', 'mutualpref') + cfg.get('url', 'mutualid')
-        },
-        'username': cfg.get('user', 'username'),
-        'password': cfg.get('user', 'password')
-    }
+        self.loginusername = cfg.get('user', 'username')
+        self.loginpassoword = cfg.get('user', 'password')
+
 
 if __name__ == '__main__':
-    initconfig('my.ini')
+    print(Config('my.ini').__dict__)

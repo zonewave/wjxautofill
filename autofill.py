@@ -7,106 +7,72 @@ from urllib.parse import quote
 from selenium.webdriver.support.expected_conditions import alert_is_present
 from selenium.webdriver.common.alert import Alert
 from pyquery import PyQuery as pq
+import readconfig
 
-configs = {
-    'url': {
-        'base': '127.0.0.1',
-        'login': 3306,
-        'mutualurl': 'www-data',
-        'password': 'www-data',
-        'database': 'awesome'
-    },
-    'username':{
-        
-    }
-    'session': {
-        'secret': 'AwEsOmE'
-    }
-}
-class Config(object):
-    baseurl = 'https://www.wjx.cn'
-    loginurl = 'https://www.wjx.cn/login.aspx'
-    loginusername = '**'
-    loginpassoword = '***'
-    selfquestionnaireid=9204675
-    mutualurl = 'https://www.wjx.cn/wjx/promote/joinbacklist.aspx?activityid=9204675' #互填问卷的 自身问卷的ID号
+browser = webdriver.Chrome()
+wait = WebDriverWait(browser, 5)
+config = readconfig.Config('my.ini')
 
 
 def login():
-    browser.get(Config.loginurl)
-    input = wait.until(
-        EC.presence_of_element_located((By.ID, 'UserName'))
-    )
-    inputpwd = wait.until(
-        EC.presence_of_element_located((By.ID, 'Password'))
-    )
-    submit = wait.until(
-        EC.element_to_be_clickable((By.ID, 'LoginButton'))
-    )
-
-    input.clear()
-    input.send_keys(Config.loginusername)
-    inputpwd.clear()
-    inputpwd.send_keys(Config.loginpassoword)
-    submit.click()
-
-def get_questionnaire_in_page():
     '''
-    遍历问卷列表
+    模拟登陆
+    :return:
+    //todo 需要增加识别验证码功能
+    '''
+    browser.get(config.loginurl)
+
+    wait.until(
+        EC.presence_of_element_located((By.ID, 'UserName'))
+    ).send_keys(config.loginusername)
+
+    wait.until(
+        EC.presence_of_element_located((By.ID, 'Password'))
+    ).send_keys(config.loginpassoword)
+
+    wait.until(
+        EC.element_to_be_clickable((By.ID, 'LoginButton'))
+    ).click()
+
+
+def get_questionnaire_list_in_page():
+    '''
+    遍历问卷列表，
     :return:
     '''
-    browser.get(Config.mutualurl)
+    browser.get(config.mutualurl)
     html = browser.page_source
     docs = pq(html)
     lists = docs('#ctl02_ContentPlaceHolder1_divJoinData')
-    # ctl02_ContentPlaceHolder1_divJoinData > div:nth-child(1) > div > div:nth-child(2) > a
-    flag=0
-    for item in lists('a').items():
-        # fieldset1
-        if flag==0:
-            flag=1
-            continue
-        browser.get(Config.baseurl + item.attr('href'))
-        docs = pq(browser.page_source)
-        #savefile(item.attr('href'), browser.page_source)
-        getquestionnairesnode(docs)
-
-def removechar(str, flag):
-    strarr = str.split(flag)
-    str = ''.join(strarr)
-    return str
+    for item in lists('a').items()[1:]:
+        browser.get(config.baseurl + item.attr('href'))
+        # savefile(item.attr('href'), browser.page_source)
+        autofillquestionnairesnode(pq(browser.page_source))
 
 
-def getquestionnairesnode(docs):
-    questionlists = docs('#fieldset1')
-
-    ###判断是否填写过
-    try:
-        input=WebDriverWait(browser, 2).until(  EC.presence_of_element_located((By.XPATH,'''// *[ @ id = "divNotRun"] / div / div / input''')))  # 等待弹出窗口出现
-        input.click()
+def autofillquestionnairesnode(docs):
+    if ishasfill():
         return
-    except TimeoutException:
-        print("ok")
 
+    questionlists = docs('#fieldset1')
     for i, question in enumerate(questionlists('.div_question').items()):
-
         if len(question('.jqRadio')) > 0:
-            ids='q' + str(i+1) + '_2'
-            inputs=browser.find_element_by_id(ids)
-           # // *[ @ id = "q1_2"]//*[@id="q1_2"]//*[@id="q1_1"]
-           #  '''//*[@id=''' + ids + '''"]/../div[1]''')
-           #  // *[ @ id = "divquestion2"] / ul / li[1] / a
-            inputs=browser.find_element_by_xpath('''//*[@id="'''+ids+'''"]/../a''')
-            inputs.click()#divquestion1 > ul:nth-child(2) > li:nth-child(1) > a
+            ids = 'q' + str(i + 1) + '_2'
+            inputs = browser.find_element_by_id(ids)
+            # // *[ @ id = "q1_2"]//*[@id="q1_2"]//*[@id="q1_1"]
+            #  '''//*[@id=''' + ids + '''"]/../div[1]''')
+            #  // *[ @ id = "divquestion2"] / ul / li[1] / a
+            inputs = browser.find_element_by_xpath('''//*[@id="''' + ids + '''"]/../a''')
+            inputs.click()  # divquestion1 > ul:nth-child(2) > li:nth-child(1) > a
         elif len(question('.jqCheckbox')) > 0:
             ids = 'q' + str(i + 1) + '_1'
             inputs = browser.find_element_by_xpath('''//*[@id="''' + ids + '''"]/../a''')
             inputs.click()  # divquestion1 > ul:nth-child(2) > li:nth-child(1) >
         elif len(question('.inputtext')) > 0:
-            browser.find_element_by_id('q' + str(i+1)).send_keys('I dont know anything')
+            browser.find_element_by_id('q' + str(i + 1)).send_keys('I dont know anything')
         else:
             break
-    submit=browser.find_element_by_xpath("//*[@id=\"submit_button\"]")
+    submit = browser.find_element_by_xpath("//*[@id=\"submit_button\"]")
     submit.click()
     try:
         WebDriverWait(browser, 2).until(alert_is_present())  # 等待弹出窗口出现，
@@ -125,19 +91,37 @@ def getquestionnairesnode(docs):
     #         browser.find_element_by_name('q' + i + '_' +j).click()
     # EC.element_to_be_clickable((By.CSS_SELECTOR. '//input[@value="cv1"]').click()  # click
 
+def is_has_fill():
+    ###判断是否填写过
+    try:
+        input = wait.until(
+            EC.presence_of_element_located((By.XPATH, '''// *[ @ id = "divNotRun"] / div / div / input''')))  # 等待弹出窗口出现
+        input.click()
+        return True
+    except TimeoutException:
+        return False
+
+def is_fail_submit():
+    try:
+        wait.until(alert_is_present())  # 等待弹出窗口出现，
+        browser.switch_to.alert.accept()
+    except TimeoutException:
+        return
+
 
 def savefile(filename, file):
     filename = removechar(filename, '/')
     filename = removechar(filename, '?')
     filename = removechar(filename, '.')
     filename = removechar(filename, '%')
-
     with open(filename + '.html', 'w+', encoding='utf-8') as f:
         f.write(file)
 
-browser = webdriver.Chrome()
+def removechar(str, flag):
+    strarr = str.split(flag)
+    str = ''.join(strarr)
+    return str
 
-wait = WebDriverWait(browser, 10)
 if __name__ == '__main__':
     login()
     # questionid=getquestionid(browser,wait)
