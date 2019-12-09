@@ -8,13 +8,27 @@ from selenium.webdriver.support.expected_conditions import alert_is_present
 from selenium.webdriver.common.alert import Alert
 from pyquery import PyQuery as pq
 
-
+configs = {
+    'url': {
+        'base': '127.0.0.1',
+        'login': 3306,
+        'mutualurl': 'www-data',
+        'password': 'www-data',
+        'database': 'awesome'
+    },
+    'username':{
+        
+    }
+    'session': {
+        'secret': 'AwEsOmE'
+    }
+}
 class Config(object):
     baseurl = 'https://www.wjx.cn'
     loginurl = 'https://www.wjx.cn/login.aspx'
     loginusername = '**'
     loginpassoword = '***'
-    questionnairelisturl = 'https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx'
+    selfquestionnaireid=9204675
     mutualurl = 'https://www.wjx.cn/wjx/promote/joinbacklist.aspx?activityid=9204675' #互填问卷的 自身问卷的ID号
 
 
