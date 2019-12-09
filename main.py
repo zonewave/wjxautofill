@@ -4,16 +4,18 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from urllib.parse import quote
+from selenium.webdriver.support.expected_conditions import alert_is_present
+from selenium.webdriver.common.alert import Alert
 from pyquery import PyQuery as pq
 
 
 class Config(object):
     baseurl = 'https://www.wjx.cn'
     loginurl = 'https://www.wjx.cn/login.aspx'
-    loginusername = '751761610@qq.com'
-    loginpassoword = '318ZYB123'
+    loginusername = '**'
+    loginpassoword = '***'
     questionnairelisturl = 'https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx'
-    mutualurl = 'https://www.wjx.cn/wjx/promote/joinbacklist.aspx?activityid=9204675'
+    mutualurl = 'https://www.wjx.cn/wjx/promote/joinbacklist.aspx?activityid=9204675' #互填问卷的 自身问卷的ID号
 
 
 def login():
@@ -34,8 +36,11 @@ def login():
     inputpwd.send_keys(Config.loginpassoword)
     submit.click()
 
-
 def get_questionnaire_in_page():
+    '''
+    遍历问卷列表
+    :return:
+    '''
     browser.get(Config.mutualurl)
     html = browser.page_source
     docs = pq(html)
@@ -49,19 +54,8 @@ def get_questionnaire_in_page():
             continue
         browser.get(Config.baseurl + item.attr('href'))
         docs = pq(browser.page_source)
-        savefile(item.attr('href'), browser.page_source)
+        #savefile(item.attr('href'), browser.page_source)
         getquestionnairesnode(docs)
-
-
-def savefile(filename, file):
-    filename = removechar(filename, '/')
-    filename = removechar(filename, '?')
-    filename = removechar(filename, '.')
-    filename = removechar(filename, '%')
-
-    with open(filename + '.txt', 'w+', encoding='utf-8') as f:
-        f.write(file)
-
 
 def removechar(str, flag):
     strarr = str.split(flag)
@@ -71,20 +65,41 @@ def removechar(str, flag):
 
 def getquestionnairesnode(docs):
     questionlists = docs('#fieldset1')
+
+    ###判断是否填写过
+    try:
+        input=WebDriverWait(browser, 2).until(  EC.presence_of_element_located((By.XPATH,'''// *[ @ id = "divNotRun"] / div / div / input''')))  # 等待弹出窗口出现
+        input.click()
+        return
+    except TimeoutException:
+        print("ok")
+
     for i, question in enumerate(questionlists('.div_question').items()):
 
         if len(question('.jqRadio')) > 0:
-            ids='q' + str(i+1) + '_1'
+            ids='q' + str(i+1) + '_2'
             inputs=browser.find_element_by_id(ids)
-           # // *[ @ id = "q1_2"]//*[@id="q1_2"]
-            browser.find_element_by_xpath('''//*[@id="q1_2"]/../div[1]''')
+           # // *[ @ id = "q1_2"]//*[@id="q1_2"]//*[@id="q1_1"]
+           #  '''//*[@id=''' + ids + '''"]/../div[1]''')
+           #  // *[ @ id = "divquestion2"] / ul / li[1] / a
+            inputs=browser.find_element_by_xpath('''//*[@id="'''+ids+'''"]/../a''')
             inputs.click()#divquestion1 > ul:nth-child(2) > li:nth-child(1) > a
         elif len(question('.jqCheckbox')) > 0:
-            browser.find_element_by_id('q' + str(i+1)+ '_2').click()
+            ids = 'q' + str(i + 1) + '_1'
+            inputs = browser.find_element_by_xpath('''//*[@id="''' + ids + '''"]/../a''')
+            inputs.click()  # divquestion1 > ul:nth-child(2) > li:nth-child(1) >
         elif len(question('.inputtext')) > 0:
             browser.find_element_by_id('q' + str(i+1)).send_keys('I dont know anything')
         else:
             break
+    submit=browser.find_element_by_xpath("//*[@id=\"submit_button\"]")
+    submit.click()
+    try:
+        WebDriverWait(browser, 2).until(alert_is_present())  # 等待弹出窗口出现，
+        browser.switch_to.alert.accept()
+    except TimeoutException:
+        return
+
     return
     # elif len(question('.lisort')) > 0:
     #     sortlen=len(question('.lisort').items())
@@ -97,8 +112,14 @@ def getquestionnairesnode(docs):
     # EC.element_to_be_clickable((By.CSS_SELECTOR. '//input[@value="cv1"]').click()  # click
 
 
-# def isradio(docs):
+def savefile(filename, file):
+    filename = removechar(filename, '/')
+    filename = removechar(filename, '?')
+    filename = removechar(filename, '.')
+    filename = removechar(filename, '%')
 
+    with open(filename + '.html', 'w+', encoding='utf-8') as f:
+        f.write(file)
 
 browser = webdriver.Chrome()
 
