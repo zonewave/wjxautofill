@@ -43,10 +43,11 @@ def get_questionnaire_list_in_page():
     browser.get(config.mutualurl)
     html = browser.page_source
     docs = pq(html)
-    lists = docs('#ctl02_ContentPlaceHolder1_divJoinData')
-    for item in lists('a').items()[1:]:
+    lists = docs('#ctl02_ContentPlaceHolder1_divJoinData a').items()
+    next(lists)
+    for item in lists:
         browser.get(config.baseurl + item.attr('href'))
-        # savefile(item.attr('href'), browser.page_source)
+        #savefile(item.attr('href'), browser.page_source)
         autofillquestionnairesnode(pq(browser.page_source))
 
 
@@ -72,13 +73,10 @@ def autofillquestionnairesnode(docs):
             browser.find_element_by_id('q' + str(i + 1)).send_keys('I dont know anything')
         else:
             break
-    submit = browser.find_element_by_xpath("//*[@id=\"submit_button\"]")
-    submit.click()
-    try:
-        WebDriverWait(browser, 2).until(alert_is_present())  # 等待弹出窗口出现，
-        browser.switch_to.alert.accept()
-    except TimeoutException:
-        return
+    # submit = browser.find_element_by_xpath("//*[@id=\"submit_button\"]")
+    # submit.click()
+    # fail_submit()
+
 
     return
     # elif len(question('.lisort')) > 0:
@@ -91,6 +89,7 @@ def autofillquestionnairesnode(docs):
     #         browser.find_element_by_name('q' + i + '_' +j).click()
     # EC.element_to_be_clickable((By.CSS_SELECTOR. '//input[@value="cv1"]').click()  # click
 
+
 def is_has_fill():
     ###判断是否填写过
     try:
@@ -101,7 +100,8 @@ def is_has_fill():
     except TimeoutException:
         return False
 
-def is_fail_submit():
+
+def fail_submit():
     try:
         wait.until(alert_is_present())  # 等待弹出窗口出现，
         browser.switch_to.alert.accept()
@@ -117,15 +117,17 @@ def savefile(filename, file):
     with open(filename + '.html', 'w+', encoding='utf-8') as f:
         f.write(file)
 
+
 def removechar(str, flag):
     strarr = str.split(flag)
     str = ''.join(strarr)
     return str
 
+
 if __name__ == '__main__':
     login()
     # questionid=getquestionid(browser,wait)
-    get_questionnaire_in_page()
+    get_questionnaire_list_in_page()
     # html = browser.page_source
     # doc = pq(html)
     # print(doc)
