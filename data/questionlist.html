@@ -1,0 +1,750 @@
+<html xmlns="http://www.w3.org/1999/xhtml" style="" class=" js no-touch csstransforms3d csstransitions"><head id="ctl02_Head1"><title>
+	互填问卷
+</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"><meta name="renderer" content="webkit|ie-comp|ie-stand"><meta id="ctl02_keywords" name="keywords" content="问卷星"><link href="/wjxUI/src/wjxUI.css?v=11" rel="stylesheet"><link rel="stylesheet" type="text/css" href="/newwjx/css/default.css?v=5"><link rel="Stylesheet" type="text/css" href="/newwjx/css/wjxdesign360.css?v=19">
+    <style>
+        .selSendTypeBox {
+            position: absolute;
+            top: 20px;
+            left: 480px;
+            display: flex;
+            align-items: center;
+            color: #333333;
+            font-size: 14px;
+        }
+
+        .selectpick-div {
+            background: #fff;
+        }
+    </style>
+
+    <script type="text/javascript" src="//cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        !window.jQuery && document.write('<script src="/js/jquery-1.10.2.min.js"><\/script>');
+    </script>
+    <script src="/layer/layer.js?v=11"></script><link rel="stylesheet" href="https://www.wjx.cn/layer/theme/default/layer.css?v=3.1.0" id="layuicss-layer">
+    <script src="/newwjx/js/modernizr.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var _$ = jQuery.noConflict();
+    </script>
+    <script src="/newwjx/js/selectpick.js?v=4" type="text/javascript"></script>
+
+</head>
+<body class="fp-viewing" style="">
+    <div class="main-container">
+        <div class="nav-bar aside size30x30" id="leftlabel">
+            <div class="ui-sidebar">
+                <a href="/newwjx/manage/myquestionnaires.aspx?randomt=1576043949" class="return-wrapper">
+                    <em class="icon return-icon"></em>
+                    <div class="tips">
+                        <div class="caret-top"></div>
+                        返回我的问卷
+                    </div>
+                </a>
+                <a class="nav-items" href="/wjx/design/designstart.aspx?activity=9204675">
+                    <div class="items-box">
+                        <i class="icon testDesign-icon"></i>
+                    </div>
+                    <br>
+                    <span class="items-name">设计问卷</span>
+                    <em class="caret-left"></em>
+                </a>
+                <a class="nav-items clicked" href="/newwjx/design/sendqstart.aspx?activityid=9204675">
+                    <div class="items-box">
+                        <i class="icon issusPapers-icon"></i>
+                    </div>
+                    <br>
+                    <span class="items-name">发送问卷</span>
+                    <em class="caret-left"></em>
+                </a>
+                <a class="nav-items" href="/wjx/activitystat/reporttransfer.aspx?activity=9204675">
+                    <div class="items-box">
+                        <i class="icon resultsData-icon"></i>
+                    </div>
+                    <br>
+                    <span class="items-name">分析&amp;下载</span>
+                    <em class="caret-left"></em>
+                </a>
+            </div>
+            <div id="ctl02_divKeFu" class="ui-sidebottom">
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="PDF_launch('/newwjx/manage/kefu.aspx',260,260);">
+                        <div class="icon-box">
+                            <i class="icon kefu-icon"></i>
+                            <div>客服中心</div>
+                        </div>
+                    </a>
+                       
+                    </li>
+                    <li alt="帮助中心">
+                        <a href="/help/help.aspx" title="帮助中心" target="_blank">
+                            <div class="icon-box">
+                                <i class="icon help-icon"></i>
+                                <div>
+                                    帮助中心
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="inside-wrapper">
+            <div class="inside-head clearfix" style="">
+                <div class="activity-box pull-left">
+                    <span id="ctl02_spanActivity" style="display: none"><select id="ddlActivitynew" style="" class="select-hide"><option value="9204675" selected="selected">关于空气污染调查问卷(ID:9204675)</option><option value="12087266">O2O 模式对社区居民生活方式的影响(ID:12087266)</option><option value="12078110">O2O 模式下居民生活方式改变的调查(ID:12078110)</option><option value="5515094">对民航业的了解度的调查问卷(ID:5515094)</option></select></span>
+
+                <div class="selectpick-div-box" onselectstart="return false;" style="z-index: 100;"><div class="selectpick-div selectpick-div-ddlActivitynew" id="selectpick-ddlActivitynew" style="height: 30px; line-height: 28px; width: 140px;"><div id="selectpick-span-ddlActivitynew" style="width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">关于空气污染调查问卷(ID:9204675)</div><div class="selectpick-icon" id="selectpick-icon-ddlActivitynew"></div></div><div class="selectpick-options selectpick-options-ddlActivitynew"></div></div></div>
+                <a href="/wjx/design/previewmobile.aspx?activity=9204675&amp;s=1" id="ctl02_hrefView" target="_blank" class="btnnew btn-default btn-lg btn-nobg view-btn">预览问卷</a>
+
+                <div class="nav-show clearfix" id="toplabel">
+                    <div class="nav-box clearfix" style="display: none">
+                        <a class="nav-items pull-left" href="/wjx/design/designstart.aspx?activity=9204675">
+                            <label class="icon ksdesignGuide-icon"></label>
+                            <br>
+                            <span>设计向导</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/newwjx/design/editquestionnaire.aspx?activity=9204675">
+                            <label class="icon ksedit-icon"></label>
+                            <br>
+                            <span>编辑问卷</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/design/questionnairesettings.aspx?activity=9204675">
+                            <label class="icon kssetting-icon"></label>
+                            <br>
+                            <span>问卷设置</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/newwjx/join/jqnew.aspx?q=9204675&amp;wg=1&amp;t=637116695493387270">
+                            <label class="icon surface-icon"></label>
+                            <br>
+                            <span>问卷外观</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/design/sethbaward.aspx?activity=9204675">
+                            <label class="icon kshongbao-icon"></label>
+                            <br>
+                            <span>红包&amp;奖品</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/rule/addrule.aspx?activity=9204675">
+                            <label class="icon quality-icon"></label>
+                            <br>
+                            <span>质量控制</span>
+                        </a>
+                        
+                    </div>
+                    <div class="nav-box clearfix" style="">
+                        <a class="nav-items pull-left" href="/newwjx/design/sendqstart.aspx?activity=9204675">
+                            <label class=" icon linkCode-icon"></label>
+                            <br>
+                            <span>链接与二维码</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/promote/urlemed.aspx?activityid=9204675" style="display: none">
+                            <label class="icon CustomVariables-icon"></label>
+                            <br>
+                            <span>自定义参数</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/promote/sendweixin.aspx?activityid=9204675">
+                            <label class="icon wechat-icon"></label>
+                            <br>
+                            <span>微信发送</span>
+                        </a>
+                        
+
+                        
+                        <a href="javascript:void(0)" id="ctl02_divEmailSms" class="nav-items pull-left">
+                            <label class="icon email-icon"></label>
+                            <br>
+                            <span>邮件&amp;短信</span>
+                            <ul class="nav-ul" id="EmailSms">
+                                <li value="1">邮件发送</li>
+                                <li value="2">短信发送</li>
+                            </ul>
+                        </a>
+                        <a href="/sample/demand.aspx?activityid=9204675&amp;lst=1&amp;npub=1" id="ctl02_divsampleId" class="nav-items pull-left" target="_blank">
+                            <label class="icon sanpleinf-icon"></label>
+                            <br>
+                            <span>样本服务</span>
+                        </a>
+                        <a href="/wjx/promote/joinbacklist.aspx?activity=9204675" id="ctl02_divjoin" class="nav-items pull-left clicked">
+                            <label class="icon join-icon"></label>
+                            <br>
+                            <span>互填问卷</span>
+                        </a>
+                        <a href="/wjx/promote/promoteapply.aspx?activity=9204675" id="ctl02_divpromote" class="nav-items pull-left">
+                            <label class="icon promote-icon"></label>
+                            <br>
+                            <span>申请推荐</span>
+                        </a>
+                    </div>
+                    
+                    <div id="ctl02_divCommonNavBar" class="nav-box clearfix" style="display: none">
+                        <a class="nav-items pull-left" href="/report/9204675.aspx">
+                            <label class="icon Answer2-icon"></label>
+                            <br>
+                            <span>统计&amp;分析</span>
+                        </a>
+                        <a class="nav-items pull-left" href="/wjx/activitystat/viewstatsummary.aspx?activity=9204675&amp;">
+                            <label class="icon Answer1-icon"></label>
+                            <br>
+                            <span>查看下载答卷</span>
+                        </a>
+                        
+                        <a class="nav-items pull-left" href="/wjx/activitystat/viewurl.aspx?activity=9204675&amp;">
+                            <label class="icon Answer3-icon"></label>
+                            <br>
+                            <span>答案来源分析</span>
+                        </a>
+
+                        <a class="nav-items pull-left" href="/wjx/activitystat/visiturl.aspx?activity=9204675&amp;" style="">
+                            <label class="icon Answer4-icon"></label>
+                            <br>
+                            <span>完成率分析</span>
+                        </a>
+                    </div>
+                    <div class="nav-box" style="display: none;">
+                        <a class="nav-items pull-left " href="/newwjx/design/sendqstart.aspx?activityid=9204675">
+                            <label class="icon defauleWx-icon"></label>
+                            <br>
+                            <span>默认方式</span>
+                        </a>
+                        <a id="ctl02_hrefLink" class="nav-items pull-left">
+                            <label class=" icon linkCode-icon"></label>
+                            <br>
+                            <span>链接与二维码</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/wjx/design/previewmobile.aspx?activity=9204675&amp;s=1" id="ctl02_hrefViewnew" target="_blank" class="btnnew btn-default btn-lg btn-nobg view-btn-mini help-btn">预览问卷</a>
+            </div>
+            
+            <script type="text/javascript">
+                _$(".ui-sidebottom li").hover(function () {
+                    _$(this).find("div.service-box").eq(0).css("display", "block");
+                }, function () {
+                    _$(this).find("div.service-box").eq(0).css("display", "none");
+                })
+                var outlabel =1;
+                var innerlabel ="互填问卷";
+                var vstat =0;
+                var $topoutlabel = _$("#toplabel div.nav-box")
+                var $leftoutlabel = _$("#leftlabel a.nav-items")
+                var $leftoutul = _$("#leftlabel dd.sub-item")
+                //var $leftoutul=_$("#leftlabel dd")
+                var $leftoutli = _$("#leftlabel dd.sub-item").eq(outlabel).find("a");
+
+                _$(".selSendType option:contains('" + innerlabel + "')").attr("selected", "selected");
+
+                for (var i = 0; i < $topoutlabel.length; i++) {
+                    $topoutlabel.eq(i).css("display", "none");
+                }
+                $topoutlabel.eq(outlabel).css("display", "");
+                var $topinnerlabel = $topoutlabel.eq(outlabel).find("span");
+                var $topinnera = $topoutlabel.eq(outlabel).find("a");
+                for (var i = 0; i < $topinnerlabel.length; i++) {
+                    if ($topinnerlabel.eq(i).text() == innerlabel) {
+                        $topinnera.eq(i).addClass("clicked");
+                    }
+                    else if (vstat == 1) {
+                        $topinnera.eq(i).hide();
+                    }
+                }
+                for (var i = 0; i < $leftoutli.length; i++) {
+                    if ($leftoutli.eq(i).text() == innerlabel) {
+                        $leftoutli.eq(i).addClass("current");
+                    }
+                }
+                if (outlabel == 3) {
+                    outlabel = 1;
+                }
+
+                $leftoutlabel.eq(outlabel).addClass("clicked");
+                $leftoutul.eq(outlabel).css("display", "block");
+                $overall_report = _$(".overall__report"),
+                    $overall_report_pageDec = $overall_report.find(".overall__report-pageDec");
+                if (ISIE(8) || ISIE(7) || ISIE(6)) {
+                    $overall_report_pageDec.children(".items:nth-child(5n + 1)").css({
+                        "margin-left": 0
+                    });
+                }
+                /*** 内部 选择问卷的select美化按钮 在1024,1366,1600分辨率下的宽度*/
+                var activity_box,
+                    wind_width_obj,
+                    window_width;
+                _$("body").scrollTop(10);
+                if (_$("body").scrollTop() > 0) {
+                    window_width = _$(window).width() + 17;//获得屏幕分辨率
+                }
+                else {
+                    window_width = _$(window).width();
+                }
+                _$("body").scrollTop(0);
+                // console.log(window_width)
+                if (ISIE(7)) {
+                    activity_box = 140;
+                }
+                else {
+                    if (window_width >= 1600) {
+                        activity_box = 300;
+                    } else if (window_width < 1600 && window_width >= 1349) {
+                        activity_box = 200;
+                    } else {
+                        activity_box = 140;
+                    }
+
+                }
+                wind_width_obj = {
+                    container: ".activity-box",
+                    width: activity_box,
+                    height: 30,
+                    disabled: false,
+                    flags: true,
+                    freeWidth: true,
+                    MaxfreeWidth: 600
+                };
+
+                _$("#ddlActivitynew").selectpick(wind_width_obj);
+                var reportId = '';
+                _$("#ddlActivitynew").change(function () {
+                    var activity = _$(this).val();
+                    if (activity) {
+                        var loc = window.location.href.toLowerCase();
+                        loc = loc.replace(/activity=(\d+)/gi, "activity=" + activity + "");
+                        loc = loc.replace(/activityid=(\d+)/gi, "activityid=" + activity + "");
+                        loc = loc.replace(/\/(\d+)\.aspx/gi, "\/" + activity + "\.aspx");
+                        loc = loc.replace(/\/(\d+),/gi, "\/" + activity + ",");
+
+                        if (reportId) {
+                            loc = loc.replace(/reportid=(\d+)/g, "");
+                            loc = loc.replace(/,(\d+)/g, "");
+                        }
+                        if (loc.indexOf("viewregnew.aspx") > -1 || loc.indexOf("viewregnew2.aspx") > -1)
+                            loc = "/report/" + activity + ".aspx";
+                        if (loc.indexOf("setcepingreport.aspx") > -1)
+                            loc = "/wjx/activitystat/setcepingreport.aspx?activity=" + activity;
+                        if (loc.indexOf("newssystem.aspx") > -1)
+                            loc = "/wjx/design/newssystem.aspx?activity=" + activity;
+                        window.location = loc;
+                    }
+                })
+                var divEmailSms = document.getElementById("ctl02_divEmailSms");
+                if (divEmailSms) {
+                    var lis = _$("#ctl02_divEmailSms li");
+                    lis.bind("click", function () {
+                        var val = _$(this).attr("value");
+                        var msg = "邮件发送功能只对企业版用户提供，您是免费版用户，请升级到企业版！";
+                        var loc = "/register/upgradevip.aspx?upgradeReason=27";
+                        if (val == "2") {
+                            msg = "短信发送功能只对企业版用户提供，您是免费版用户，请升级到企业版！";
+                            loc = "/register/upgradevip.aspx?upgradeReason=28";
+                        }
+                        layer.alert(msg, { btn: '知道了', title: '提示' }, function () {
+                            location.href = loc;
+                        })
+                    })
+                }
+                function processQywx() {
+                    var canShare=1;
+                    if(!canShare){
+                        alertLink("提示：只有尊享版用户才能对外回收答卷，请升级！","https://www.sobot.com/chat/pc/index.html?sysNum=02aa1bd26e3b499aa36f147f5d84f78e&moduleType=4&groupId=167fc0cc2f56459bbde0477511c9a20d&uname=751761610&remark=%e5%85%8d%e8%b4%b9%e7%89%88&tel=13323392865&params=%7b%22UserName%22%3a%22751761610%22%7d","联系客服");
+                        return;
+                    }
+                    var cc = confirmnew("此问卷设置了只允许钉钉用户参与，是否取消该限制？", function () {
+                        var url = 0 ? "/mobile/qywx/qywxlimit.ashx?activity=9204675" : "/mobile/dingding/dingdinglimit.ashx?activity=9204675";
+                        _$.get(url, function () {
+                            window.location.href = "/newwjx/design/sendqstart.aspx?activity=9204675";
+                        });
+                    });
+                }
+
+
+            </script>
+            <div class="inside-main">
+                
+                <div class="inside-box">
+                    <div class="box-items">
+
+                        <div style="clear: both"></div>
+                        <div class="step__evaluate article" style="text-align: left">
+                            <style>
+                                .SET-Guide {
+                                    width: 740px !important;
+                                }
+
+                                .SET-Expansion h2 {
+                                    font-size: 12px;
+                                }
+                            </style>
+                            
+
+
+    
+<style>
+ .rankred
+ {
+     background:#ff6600;
+ }
+ .pub
+ {
+     width:150px; display:inline-block;text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+ }
+ .mutualQbox {
+     min-height: 760px;
+ }
+ .title {
+     font-size: 16px;
+     color: #343434;
+     font-weight: bold;
+     display: flex;
+     align-items: center;
+     margin-bottom: 10px;
+ }
+ .prompt-icon {
+     width: 14px;
+     height: 14px;
+     margin-left: 5px;
+     background-size: 14px 14px;
+     background-repeat: no-repeat;
+     background-image: url("/images/newimg/wjx-mutualq/prompt@2x.png");
+     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/newimg/wjx-mutualq/prompt@2x.png',sizingMethod='scale');
+ }
+ .community-box {
+     font-size: 15px;
+     color: #343434;
+     background-color: #F7F7F7;
+     box-shadow:0px 0px 1px 0px rgba(120,120,120,1);
+     border-radius:2px; 
+     padding: 16px;
+ }
+ .q-name {
+     font-size: 14px;
+     color: #747474;
+ }
+ .tit {
+     margin-bottom: 25px;
+ }
+ .book-icon {
+     width: 18px;
+     height: 22px;
+     margin-left: 15px;
+     background-size: 18px 22px;
+     background-repeat: no-repeat;
+     background-image: url("/images/newimg/wjx-mutualq/bookq@2x.png");
+     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/newimg/wjx-mutualq/bookq@2x.png',sizingMethod='scale');
+ }
+ .back-community {
+    display: inline-block;
+    width:88px;
+    height:28px;
+    line-height: 28px;
+    margin-left: 20px;
+    color: #343434;
+    font-size: 13px;
+    text-align: center;
+    background-color: #F2F4F5;
+    box-shadow:0px 0px 1px 0px rgba(154,154,154,1);
+ }
+ .rank-box {
+     position: relative;
+     margin-left: 50px;
+ }
+  .rank-box:after{
+      display: block;
+      content: "";
+      height: 12px;
+      width: 1px;
+      background-color: #E6E6E6;
+      position: absolute;
+      left: -25px;
+      top: 5px;
+  }
+  .get-points {
+      font-size: 14px;
+      color: #343434;
+  }
+  .get-points li {
+      line-height: 24px;
+      margin-bottom: 5px;
+  }
+  .pointer-icon {
+      width: 16px;
+     height: 16px;
+     margin-left: 3px;
+     background-size: 16px 16px;
+     background-repeat: no-repeat;
+     background-image: url("/images/newimg/wjx-mutualq/pointer@2x.png");
+     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/newimg/wjx-mutualq/pointer@2x.png',sizingMethod='scale');
+  }
+  .follow-btn {
+    display: inline-block;
+    text-align: center;
+    width:64px;
+    height:24px;
+    font-size: 12px;
+    color: #007AFF;
+    background-color:#fff;
+    box-shadow:0px 0px 1px 0px rgba(154,154,154,1);
+    border-radius:2px;
+  }
+  .list-tit {
+      overflow: hidden;
+      font-size: 13px;
+      color: #848484;
+      line-height: 40px;
+      border-bottom: 1px solid #F2F2F2;
+  }
+  .list-tit span {
+      float: left;
+  }
+  .list-tit span:first-child {
+      width: 10%;
+       padding-left: 20px;
+  }
+  .list-tit span:first-child + span {
+      width: 80%;
+      *width: 570px;
+  }
+  .list-tit span:first-child + span + span {
+      width: 10%;
+      text-align: right;
+      padding-right: 20px;
+  }
+  .post_item {
+      width: 100%;
+      border-bottom: 1px solid #F2F2F2;
+  }
+  .post_item,
+  .rank,
+  .post_item_body{
+      padding: 0;
+      margin: 0;
+  }
+  .post_item_body {
+      height: 52px;
+      line-height: 52px;
+      font-size: 14px;
+  }
+  .post_item_body > div:first-child {
+       width: 10%;
+       padding-left: 20px;
+  }
+  .post_item_body > div:first-child + div {
+      width: 80%;
+  }
+  .post_item_body > div:first-child + div + div {
+      width: 10%;
+      text-align: right;
+      padding-right: 20px;
+  }
+  .rank {
+      color: #343434;
+  }
+    .divBack h5 {
+        font-size: 18px;
+        color: #343434;
+        padding: 0 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .divBack .p {
+        font-size: 16px;
+        color: #343434;
+        padding: 0 24px;
+    }
+   .btn-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 52px;
+            line-height: 52px;
+            border-top: 1px solid #EBEBEB;
+            background:linear-gradient(360deg,rgba(243,243,243,1) 0%,rgba(255,255,255,1) 100%);
+        }
+         .back-btn {
+            float: right;
+            font-size: 14px;
+            color: #343434;
+            width:84px;
+            height:36px;
+            line-height: 34px;
+            text-align: center;
+            background-color: #fff;
+            border-radius:2px;
+            border:1px solid #E3E4E6;
+            margin: 8px 8px 0 0;
+        }
+         .retain-btn {
+            font-size: 14px;
+            color: #fff;
+            float: right;
+            width:84px;
+            height:36px;
+            line-height: 34px;
+            text-align: center;
+            background-color: #007AFF;
+            border-radius:2px;
+            border:1px solid #0965CA;
+            margin: 8px 8px 0 0;
+        }
+         .retain-btn:hover {
+             color: #fff;
+         }
+         .back-btn:hover {
+             color: #343434;
+         }
+</style>
+<div id="ctl02_ContentPlaceHolder1_postmain" class="box">
+<div class="box__inner mutualQbox">
+       <div class="title">互填社区 <a href="/help/help.aspx?helpid=395&amp;h=1" class="icon prompt-icon" target="_blank"></a></div>
+       <div class="community-box">
+           <div class="tit">
+               <span>当前问卷</span>
+               <i class="icon book-icon"></i>
+               <span class="q-name">关于空气污染调查问卷</span>
+               
+               <a href="javascript:void(0)" onclick=" PDF_launch('divBack', 484, 300);" class="back-community">退出互填社区</a>
+           </div>
+           <div class="tit">
+               <span>点数余额</span>
+               <span><span id="ctl02_ContentPlaceHolder1_lblCount"><a href="/wjx/manage/viewpoint.aspx?username=751761610" class="link-UF30" target="_blank" style="font-size:15px;color:#007AFF;text-decoration: none;margin-left: 17px;font-weight: bold;">-105</a></span></span>
+               <span class="rank-box"><span id="ctl02_ContentPlaceHolder1_lblRank">赶紧填问卷赚点数吧</span></span>
+           </div>
+           <ul class="get-points">
+               <li style="margin-bottom: 10px;">如何获得点数 <i class="icon pointer-icon"></i></li>
+               <li style="display: none;">1、认真填写互填列表中的问卷；</li>
+               <li id="ctl02_ContentPlaceHolder1_divSend" style="display: none;">2、关注了问卷星微信服务号，已获赠200点数</li>
+               <li style="display: none;">3、在问卷星服务号对话框回复“互填”，可在微信中互填问卷赚取点数；</li>
+           </ul>
+
+            
+      
+        <a href="javascript:void(0);" id="ctl02_ContentPlaceHolder1_hrefGuanZhu" onclick="showData(event,this,'gQGl8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL0QzV01mbFhsYzNrS1JKdW1mbG1aAAIEoOf6UwMEAAAAAA==',1);" class="titlelnk" style="font-size:14px;display: none">关注问卷星微信账号</a>
+           <div id="divMa" style="display: none; position: absolute; z-index: 1; border: 1px solid #DBDBDB;width: 200px; height: 200px; background: white;" onclick="showData(event);">
+               <div style="text-align: center;">
+                   <img src="" alt="" width="200" height="200">
+               </div>
+           </div>
+           
+           <script type="text/javascript">
+               function getCoords(el) {
+                   var box = el.getBoundingClientRect(),
+	                doc = el.ownerDocument,
+	                body = doc.body,
+	                html = doc.documentElement,
+	                clientTop = html.clientTop || body.clientTop || 0,
+	                clientLeft = html.clientLeft || body.clientLeft || 0,
+	                top = box.top + (self.pageYOffset || html.scrollTop || body.scrollTop) - clientTop,
+	                left = box.left + (self.pageXOffset || html.scrollLeft || body.scrollLeft) - clientLeft
+                   return { 'top': top, 'left': left };
+               }
+               function verifyMobile() {
+                   var url = '/register/changephone.aspx?jc=1&t=' + new Date().valueOf();
+                   PDF_launch(url, 580, 220);
+               }
+               function hasBind() {
+                   window.location=window.location.href;
+               }
+               function checkDhc(obj) {
+                   obj.parentNode.style.display = "none";
+                   var submit_frame = document.createElement("div");
+                   submit_frame.style.display = "none";
+                   var iframeSrc = "/handler/getdhc.ashx";
+                   submit_frame.innerHTML = "<iframe id='mainframe' name='mainframe'> </iframe>";
+                   document.body.appendChild(submit_frame);
+                   var mainframe = document.getElementById("mainframe");
+                   mainframe.src = iframeSrc;
+               }
+               function showData(event, obj, ticket,type) {
+                   var d = document.getElementById("divMa");
+                   d.style.display = "";
+                   var evt = event || window.event;
+                   if (evt) evt.stopPropagation ? evt.stopPropagation() : evt.cancelBubble = true;
+                   if (!obj) return;
+                   var xy = getCoords(obj);
+                   var xias = xy.left - 40;
+                   var yias = xy.top + 20;
+
+                   var img = d.getElementsByTagName("img")[0];
+                   img.src = "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + encodeURIComponent(ticket);
+                   d.style.left = xias + "px";
+                   d.style.top = yias + "px"; //;
+                   //document.getElementById("divBind").style.display = type ? "" : "none";
+               }
+               document.onclick = function () {
+                   var d = document.getElementById("divMa");
+                   d.style.display = "none";
+               }
+           </script>
+       </div>
+       <div class="title" style="margin-top: 55px"><b>互填列表</b><span style="font-size:14px;color:#545454;font-weight: normal">（如问卷中存在个人隐私题目，请谨慎填写）</span>
+       </div>
+    <div id="post_list" class="mutual-list" style="padding: 0;"> 
+        <div class="list-tit">
+            <span>序号</span>
+            <span>名称</span>
+            <span>点数余额</span>
+        </div>
+        <div id="ctl02_ContentPlaceHolder1_divJoinData"><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">1</span></div><div style="float: left;">&nbsp;<a href="/jq/52082928.aspx?inviteid=zzRkqVsMneAXKHUVJSViqg%3d%3d" class="titlelnk" target="_blank" onclick="join(52082928);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">针对公共洗手间的问卷调查【复制】</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">413</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">2</span></div><div style="float: left;">&nbsp;<a href="/jq/43413919.aspx?inviteid=g6y6LDWbHakQYNvonAnfew%3d%3d" class="titlelnk" target="_blank" onclick="join(43413919);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">大学生网购调查问卷[复制]</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">121</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">3</span></div><div style="float: left;">&nbsp;<a href="/jq/51004037.aspx?inviteid=YmtQCK6Ae1rFHc%2fZLt%2bejQ%3d%3d" class="titlelnk" target="_blank" onclick="join(51004037);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">对dear one产品的满意度的调查研究</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">86</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">4</span></div><div style="float: left;">&nbsp;<a href="/jq/50839740.aspx?inviteid=U2HIxnltk77GRRdX%2bCjmuw%3d%3d" class="titlelnk" target="_blank" onclick="join(50839740);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">家用制氧机消费者调查问卷（仅限购买制氧机的填写，谢谢）</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">62</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">5</span></div><div style="float: left;">&nbsp;<a href="/jq/51058356.aspx?inviteid=6%2bSWZsUp9xh1jT5BtBbcPA%3d%3d" class="titlelnk" target="_blank" onclick="join(51058356);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于广西玉林市城市形象的调查研究</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">61</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">6</span></div><div style="float: left;">&nbsp;<a href="/jq/51748842.aspx?inviteid=xysEFziJvFr750oMLTn0Rw%3d%3d" class="titlelnk" target="_blank" onclick="join(51748842);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于国民对北冰洋汽水饮料的认知调查【复制】</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">54</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">7</span></div><div style="float: left;">&nbsp;<a href="/jq/52019419.aspx?inviteid=JDWG9%2b1V%2flw7vIoozLoHPA%3d%3d" class="titlelnk" target="_blank" onclick="join(52019419);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">网络时代中华职业学院学生如何购买传统日用品？</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">50</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">8</span></div><div style="float: left;">&nbsp;<a href="/jq/51711865.aspx?inviteid=iJyMeT9KOoMrefU5H%2fS35w%3d%3d" class="titlelnk" target="_blank" onclick="join(51711865);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">大学生使用“吃播”的情况调研</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">38</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">9</span></div><div style="float: left;">&nbsp;<a href="/jq/52071397.aspx?inviteid=sJxsYa5IFN%2fS%2bHqBLfR3Og%3d%3d" class="titlelnk" target="_blank" onclick="join(52071397);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">毕业设计——握式产品设计</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">38</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">10</span></div><div style="float: left;">&nbsp;<a href="/jq/52126459.aspx?inviteid=RgV76knzoXJc0ImrH2%2bgvg%3d%3d" class="titlelnk" target="_blank" onclick="join(52126459);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于儿童APP的调查</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">36</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">11</span></div><div style="float: left;">&nbsp;<a href="/jq/51856985.aspx?inviteid=3Oxj3ApoIVqu6w1NqwzKnw%3d%3d" class="titlelnk" target="_blank" onclick="join(51856985);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">大学生人际关系情况</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">31</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">12</span></div><div style="float: left;">&nbsp;<a href="/jq/51372563.aspx?inviteid=DdWmRBK6WizD%2bPydFzp0Zg%3d%3d" class="titlelnk" target="_blank" onclick="join(51372563);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于奶茶畅销原因的调查问卷表</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">26</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">13</span></div><div style="float: left;">&nbsp;<a href="/jq/51988927.aspx?inviteid=yEIeNH27P43DbSWPmEkRHw%3d%3d" class="titlelnk" target="_blank" onclick="join(51988927);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">艺术陶瓷市场调查</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">26</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">14</span></div><div style="float: left;">&nbsp;<a href="/jq/51783990.aspx?inviteid=NFoYDWK%2fx7wM6d7OxxH7Bg%3d%3d" class="titlelnk" target="_blank" onclick="join(51783990);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">O2O模式下女装店顾客满意度调查问卷</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">19</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">15</span></div><div style="float: left;">&nbsp;<a href="/jq/52100338.aspx?inviteid=ZBnAdCve79egkuRWF9BVrA%3d%3d" class="titlelnk" target="_blank" onclick="join(52100338);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于嘉兴平湖乡村旅游市场调研问卷</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">17</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">16</span></div><div style="float: left;">&nbsp;<a href="/jq/51851847.aspx?inviteid=LHWGsP6qv5PXIBGiDGTYTA%3d%3d" class="titlelnk" target="_blank" onclick="join(51851847);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">【Persuasive speech】你相信十二星座吗?</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">15</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">17</span></div><div style="float: left;">&nbsp;<a href="/jq/52032885.aspx?inviteid=zwO1kb0qjKOIjtAjt8wlng%3d%3d" class="titlelnk" target="_blank" onclick="join(52032885);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">卡乐巴巴顾客满意度调查</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">15</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">18</span></div><div style="float: left;">&nbsp;<a href="/jq/49614789.aspx?inviteid=meJl%2fML7cfxbUy%2bNlZAa%2fA%3d%3d" class="titlelnk" target="_blank" onclick="join(49614789);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">关于华夏果脯水果店满意度调查问卷</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">13</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">19</span></div><div style="float: left;">&nbsp;<a href="/jq/52056226.aspx?inviteid=oBkPvt4l%2bbHxkqfkjTrF5w%3d%3d" class="titlelnk" target="_blank" onclick="join(52056226);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">软件使用习惯行为调查</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">12</span></div><div class="divclear"></div></div></div><div class="post_item"><div class="post_item_body"><div style="float: left;"><span class="rank">20</span></div><div style="float: left;">&nbsp;<a href="/jq/52126095.aspx?inviteid=FzBqAe%2bg0VMIc80PpVOY2Q%3d%3d" class="titlelnk" target="_blank" onclick="join(52126095);return true;" style="font-size: 14px; color: #0D5FD9;text-decoration: none;">万州区居民支持国货的现状调查</a></div><div style="float: right;"><span style="display:inline-block; overflow:hidden;">9</span></div><div class="divclear"></div></div></div></div>
+    </div>
+    <div class="clear"></div>
+    <div id="divFisish" style="display: none;">
+        <div style="margin: 30px auto; text-align: center;font-size: 16px;">
+            问卷已经填写完成，<input type="button" value="确定" class="finish cancle" onclick="window.location='joinbacklist.aspx?activity=9204675';window.parent.PDF_close();">
+        </div>
+    </div>
+
+    <div id="divBack" class="divBack" style="display: none;">
+        <h5>提醒</h5>
+        <div class="p">您的问卷<span class="give">（关于空气污染调查问卷）</span>将退出互填社区</div>
+        <div class="btn-box">
+            <a href="joinbacklist.aspx?activity=9204675&amp;quit=1" id="ctl02_ContentPlaceHolder1_btnQuit" class="retain-btn">确定</a>
+             <a href="#" onclick="window.parent.PDF_close();" class="back-btn">取消</a>
+        </div>
+    </div>
+   
+    <script type="text/javascript">
+        function setCookie(name, value, expires, path, domain, secure) {
+            document.cookie = name + "=" + escape(value) +
+                    ((expires) ? "; expires=" + expires : "") +
+                    ((path) ? "; path=" + path : "") +
+                    ((domain) ? "; domain=" + domain : "") +
+                    ((secure) ? "; secure" : "");
+        }
+        function getExpDate(days, hours, minutes) {
+            var expDate = new Date();
+            if (typeof (days) == "number" && typeof (hours) == "number" && typeof (hours) == "number") {
+                expDate.setDate(expDate.getDate() + parseInt(days));
+                expDate.setHours(expDate.getHours() + parseInt(hours));
+                expDate.setMinutes(expDate.getMinutes() + parseInt(minutes));
+                return expDate.toGMTString();
+            }
+        }
+        function join(aid) {
+            setCookie("jc" + aid, "1", getExpDate(0, 0, 20), "/", "", null);
+            PDF_launch("divFisish", 360, 100);
+        }
+    </script>
+    </div>
+</div>  
+
+    <script>
+        _$(function () {
+            var _$pointer_click = _$(".get-points").find("li:eq(0)");
+            var _$show_List = _$(".get-points").find("li:not(:eq(0))").hide();
+            _$pointer_click.on("click", function () {
+                _$show_List.toggle(200);
+            })
+        })
+    </script>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    
+
+
+</body></html>
