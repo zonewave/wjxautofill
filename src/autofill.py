@@ -3,9 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from urllib.parse import quote
 from selenium.webdriver.support.expected_conditions import alert_is_present
-from selenium.webdriver.common.alert import Alert
 from pyquery import PyQuery as pq
 from lxml import etree
 import release.readconfig as readconfig

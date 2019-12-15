@@ -1,16 +1,28 @@
-from enum import Enum
+from enum import Enum,auto
 from enum import unique
 from lxml import etree
 
 
 @unique
+class Choice(Enum):
+    single = auto()
+    multiple = auto()
+    combobox = auto()
+    file_upload = auto()
+
+
+@unique
 class QuestionType(Enum):
-    none = 0  #
-    radio = 1  #
-    inputtext = 2
+    none = auto() #
+    choose = Choice(Enum)
+    #radio =  auto() #
+   # inputtext = auto()
 
 class QuestionQuery:
     a=0
+
+class Xpath_str:
+    div_question='//*[@id=\"divquestion'
 
 class Question:
     type = QuestionType.none
@@ -21,9 +33,25 @@ class Question:
         self.set_type(html)
 
     def set_type(self, html:etree._ElementTree) -> None:
-        res = html.xpath('//*[@id=\"divquestion'+self.question_id+
-                         '\"]//@class=\"inputtext\"')
 
+
+
+        switchs ={
+
+        }
+        # html.xpath('//*[@id=\"divquestion' + self.question_id +
+        #            '\"]/@class=\"table\"'):
+        if html.xpath('//*[@id=\"divquestion'+self.question_id+
+                         '\"]//@class=\"inputtext\"'):
+            self.type=QuestionType.inputtext
+        elif  html.xpath()
+
+    def is_single_chose(self):
+        # // *[ @ id = "divquestion1"] / ul
+
+        if html.xpath(Xpath_str.div_question + self.question_id +
+                     '/@class="url'):
+        
         if res:
             self.type = QuestionType.inputtext
 

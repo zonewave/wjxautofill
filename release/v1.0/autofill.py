@@ -125,7 +125,7 @@ def removechar(str, flag):
 if __name__ == '__main__':
     login()
     # questionid=getquestionid(browser,wait)
-    get_questionnaire_in_page()
+    get_questionnaire_list_in_page()
     # html = browser.page_source
     # doc = pq(html)
     # print(doc)
