@@ -1,0 +1,127 @@
+单选：
+<a href class=jqradio>
+type=radio<
+
+多选, 注释
+<a href jqcheckbox
+ type=checkbox
+
+下拉
+<select
+
+上传
+《ifram>
+
+填空
+<textarea -    class=inputtext>
+
+多个填空
+《input  class=underlint>
+
+矩阵填空
+《<table
+    <tbody
+     《tr
+       <textarea class =inputtext
+表格填空
+<table
+ <thead>
+ < tbody>
+   <tr>
+    <textarea class =inputtext
+
+矩阵单选
+<table
+  <thead
+  <tbody>
+      <tr
+        <a class=jqradio
+                <input type=radio
+矩阵多选
+<table
+  <thead
+  <tbody>
+      <tr
+        <a class=jqcheckbox
+                <input type=checkbox
+矩阵量表
+
+<table
+  <thread>
+  <tbody>
+        <a class=jqradio
+                <input type=radio
+矩阵滑动条
+<table
+  <thread>
+  <tbody>
+   <tr
+    <div class=ruler
+
+表格数值（标题区分，表格填空
+<table
+  <thead
+  <tbody>
+      <tr
+             <textarea class=inputtext type=text
+表格下拉框
+<table
+  <thead
+  <tbody>
+      <tr
+             <selec
+表格组合
+<table
+  <thead
+  <tbody>
+      <tr
+             <textarea class=inputtext type=text
+             <selec
+量表
+<ul
+   <li
+    <a class =jqradio"
+   lnput type=radio
+NPS量表
+《ul
+   <li class =notchoice
+      <li  ulclass=onscore
+   	<li  class=-off6
+
+排序题 注释
+<ul
+   <li
+  <input checkbox
+  <span class=sortnum
+
+比重题 注释
+<table
+  <tr
+  <td  input type=text
+     <td   div class=slideer
+
+滑动条
+<div  class=ruler
+    <div class= cm
+
+商品题型
+<li class=shop-item
+      div class=text_place
+
+多级下拉
+<textartea onclick= opencitybox,class=inputtext>
+姓名：-》填空
+基本信息，密码 -》矩阵填空
+性别，年龄 -》单选
+
+
+职业  下拉
+地理位置
+《label class=get_local
+
+高校-》 多级下拉
+
+
+选择，多选，填空 ，underline,下拉，多级下拉， 文件上传，滑动，nps，排序，比重
+
+表格，矩阵，带标题头，
