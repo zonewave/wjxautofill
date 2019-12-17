@@ -25,7 +25,6 @@ class TableQuestion(Enum):
     # array_scaletable=array_radio
     array_ruler = auto()
     talbe_select = auto()
-
     proportion = auto()  # 比重题
     shopitem = auto()
 
@@ -44,7 +43,8 @@ class Xpath_str:
 
 class Question:
     type = QuestionType.none
-
+    row,col=0,0
+    is_table=False
     question_id = -1
 
     def __init__(self, html: etree._ElementTree, question_id):
@@ -53,14 +53,34 @@ class Question:
         self.content_xpath = Xpath_str.div_content.format(question_id)
         self.set_type(html)
 
+
     def set_type(self, html: etree._ElementTree) -> None:
         self.table_check()
 
     def table_check(self):
         xpath = self.html.xpath
-        if xpath(self.content_xpath + '//@class="shop-item"'):
+        if xpath(self.content_xpath + '//*[@class="shop-item"]'):
             self.type = QuestionType.table.value.shopitem
-        elif len(xpath('//*[@id="q6_1" and @class="underline"]')) > 0:
+        elif xpath('//*[@id="q6_1" and @class="underline"]') :
             self.type = QuestionType.table.value.mul_text
-        elif len(xpath(self.content_xpath + '/table')) > 0:
+        elif xpath(self.content_xpath + '/table'):
+            table_tmp = xpath(self.content_xpath + 'table[1]')
+            arrflag=True
+            if table_tmp[0].xpath('thead'):
+                arrflag=False
+
+            if arrflag:
+                # if table_tmp[0].xpath('')
+                #     // *[ @ id = "divquestion7"] / table / tbody / tr[1] / td / div / textarea
+
+
             self.type = QuestionType.table
+            arrary_text = auto()
+            table_text = auto()  #
+            table_num_text = auto()
+            array_radio = auto()
+            array_checkbox = auto()
+            # array_scaletable=array_radio
+            array_ruler = auto()
+            talbe_select = auto()
+            proportion = auto()  # 比重题

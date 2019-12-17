@@ -7,7 +7,7 @@ from urllib.parse import quote
 from selenium.webdriver.support.expected_conditions import alert_is_present
 from selenium.webdriver.common.alert import Alert
 from pyquery import PyQuery as pq
-
+import readconfig
 
 browser = webdriver.Chrome()
 wait = WebDriverWait(browser, 5)
