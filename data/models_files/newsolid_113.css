@@ -1,0 +1,38 @@
+﻿body {
+background:#e8fff9 url("//image.wjx.com/images/newbg/handbg2.jpg") no-repeat fixed top center;
+}
+#jqContent{
+margin:68px auto 0px !important;
+padding-top:0px;
+}
+#headerCss {
+background: white no-repeat;
+width: 920px;
+margin: 0 auto;
+}
+#mainCss {
+background: white;
+width: 920px;
+margin: 0 auto;
+}
+#footercss {
+width: 920px;
+margin: 0 auto;
+background: white;
+height: 20px;
+}
+.surveyhead h1 {
+font-size: 20px;
+font-weight: bold;
+color: #0ab0cd;
+}
+
+input.submitbutton {
+border: 1px solid #0b9db6;
+background: #0ab0cd;
+}
+input.submitbutton_hover,input.submitbutton:hover
+{
+    background:#28bdd7;
+color:#fff !important;
+}
