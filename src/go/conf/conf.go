@@ -23,9 +23,10 @@ type MysqlConf struct {
 }
 
 type Config struct {
-	UserName string
-	PassWord string
-	MutualId string
+	UserName        string
+	PassWord        string
+	MutualId        string
+	InternalSeconds int
 }
 
 var (

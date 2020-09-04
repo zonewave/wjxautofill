@@ -124,6 +124,7 @@ func GetQuestionnaireListInPage(wd selenium.WebDriver) (err error) {
 
 	})
 	for i := range urls {
+
 		err = wd.Get(baseUrl + urls[i])
 		if err != nil {
 			continue
@@ -144,13 +145,20 @@ func GetQuestionnaireListInPage(wd selenium.WebDriver) (err error) {
 				break
 			}
 			fmt.Println(sq.Html())
+
+			time.Sleep(time.Duration(conf.Conf.InternalSeconds) * time.Second)
+			var inputs selenium.WebElement
 			if tmp := sq.Find(".jqCheckbox"); tmp.Nodes != nil {
 				ids := fmt.Sprintf("q%d_1", qI)
-				inputs, _ := wd.FindElement(selenium.ByXPATH, `//*[@id="`+ids+`"]/../a`)
+				inputs, err = wd.FindElement(selenium.ByXPATH, `//*[@id="`+ids+`"]/../a`)
+				if err != nil {
+					isContinue = true
+					continue
+				}
 				inputs.Click()
 			} else if tmp := sq.Find(".jqRadio"); tmp.Nodes != nil {
 				ids := fmt.Sprintf("q%d_1", qI)
-				inputs, err := wd.FindElement(selenium.ByXPATH, `//*[@id="`+ids+`"]/../a`)
+				inputs, err = wd.FindElement(selenium.ByXPATH, `//*[@id="`+ids+`"]/../a`)
 				if err != nil {
 					isContinue = true
 					continue
@@ -160,8 +168,11 @@ func GetQuestionnaireListInPage(wd selenium.WebDriver) (err error) {
 
 			} else if tmp := sq.Find(".inputtext"); tmp.Nodes != nil {
 				ids := fmt.Sprintf("q%d", qI)
-				inputs, _ := wd.FindElement(selenium.ByID, ids)
-
+				inputs, err = wd.FindElement(selenium.ByID, ids)
+				if err != nil {
+					isContinue = true
+					continue
+				}
 				inputs.SendKeys("i don't know anything")
 			} else {
 				isContinue = true

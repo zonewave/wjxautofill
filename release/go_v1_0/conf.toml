@@ -1,6 +1,6 @@
-UserName = ""
-PassWord = ""
-MutualId = ""
+UserName = "*"
+PassWord = "*"
+MutualId = "*"
+InternalSeconds = 2
 
-
-#http://npm.taobao.org/mirrors/chromedriver/
+#http://npm.taobao.org/mirrors/chromedriver/85.0.4183.83/
