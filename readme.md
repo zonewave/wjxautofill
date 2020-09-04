@@ -18,5 +18,9 @@ python autofill.py
 运行环境： windows+chromedriver
 注意： 需要根据chrome的版本号[下载](http://npm.taobao.org/mirrors/chromedriver/)对应版本chromedrver, 并且加入到环境变量PATH里去。
 
-运行方式：1. 下载执行文件，双击运行 2.源码编译运行，需要安装go编译器
+运行方式：
 
+需要填写配置文件 conf.toml
+username:账户， password ：密码，  mutalid：个人发送的问卷ID
+
+1. 下载执行文件，双击运行 2.源码编译运行，需要安装go编译器
