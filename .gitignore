@@ -134,3 +134,6 @@ dmypy.json
 my.ini
 
 
+# Go
+*.exe
+src/go/conf2.toml
